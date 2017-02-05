@@ -3,7 +3,7 @@
 
     "name": "Unpepefy",
     "description": "Chrome extension to remove deplorable Pepes from your Twitter timeline.",
-    "version": "0.0.2",
+    "version": "0.0.3",
 
     "permissions": [
         "tabs",
