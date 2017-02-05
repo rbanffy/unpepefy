@@ -1,0 +1,66 @@
+*.py[cod]
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+__pycache__
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# Emacs
+*#
+.#*
+*~
+
+# Egg and SDK download caches
+cache
+
+# The virtual environments
+.env*
+
+# Chrome extensions
+*.crx
+key.pem
+linkedin-notes.zip
+
+# The generated static folders
+notes_app/src/static/bootstrap
+notes_app/src/static/ckeditor
+notes_app/src/static/jquery
+
+# Downloaded AngularJS dependencies
+notes_app/src/static/dashboard/node_modules
+notes_app/src/static/dashboard/typings
+notes_app/src/static/dashboard/app/*.js
+notes_app/src/static/dashboard/app/*.js.map
+
+# Misc
+.flake8rc

@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+
+    "name": "Unpepefy",
+    "description": "Chrome extension to remove deplorable Pepes from your Twitter timeline.",
+    "version": "0.0.2",
+
+    "permissions": [
+        "tabs",
+        "https://twitter.com/*"
+    ],
+    "icons": {
+        "128": "icon128.png",
+        "64": "icon64.png",
+        "48": "icon48.png",
+        "32": "icon32.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://twitter.com/*"
+            ],
+            "js": [ "content.js" ],
+            "run_at": "document_end"
+        }
+    ]
+}
