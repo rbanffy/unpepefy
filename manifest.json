@@ -1,9 +1,9 @@
 {
     "manifest_version": 2,
 
-    "name": "Unpepefy",
+    "name": "Unpepefy - Making Twitter Great Again",
     "description": "Chrome extension to remove deplorable Pepes from your Twitter timeline.",
-    "version": "0.0.3",
+    "version": "0.0.4",
 
     "permissions": [
         "tabs",
