@@ -3,14 +3,11 @@
 
     "name": "Unpepefy - Making Twitter Great Again",
     "description": "Browser extension to remove deplorable Pepes from your Twitter timeline.",
-    "version": "0.0.5",
+    "version": "0.0.6",
 
     "permissions": [
         "tabs",
-        "https://twitter.com/*"
-    ],
-    "permissions": [
-        "tabs",
+        "https://twitter.com/*",
         "https://tweetdeck.twitter.com/*"
     ],
     "icons": {
