@@ -17,18 +17,37 @@
 
 // Injected in the page, runs from there
 
-var PEPE_EMOJI = "url(\"https://abs.twimg.com/emoji/v2/72x72/1f438.png\")";
-var CORRECT_EMOJI = "url(\"https://abs.twimg.com/emoji/v2/72x72/1f4a9.png\")";
+var PEPE_EMOJI = "https://abs.twimg.com/emoji/v2/72x72/1f438.png";
+var TWEETDECK_EMOJI = "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
+    + "/1f438.d0b91522fe.png";
+var CORRECT_EMOJI = "https://abs.twimg.com/emoji/v2/72x72/1f4a9.png";
 
-var dePepeFy = function() {
-    console.log('load triggered');
-    var occurences = document.getElementsByClassName('Emoji--forLinks');
-    for (var i = 0; i < occurences.length; i++) {
-        if (occurences[i].style["background-image"] == PEPE_EMOJI) {
-            occurences[i].style["background-image"] = CORRECT_EMOJI;
+var unPepefy = function() {
+    if (window.location.host == "twitter.com") {
+        var spans = document.getElementsByClassName('Emoji--forLinks');
+        for (var i = 0; i < spans.length; i++) {
+            if (spans[i].style["background-image"]
+                == "url(\"" + PEPE_EMOJI + "\")")
+            {
+                spans[i].style["background-image"] =
+                    "url(\"" + CORRECT_EMOJI + "\")";
+            }
+        }
+        var imgs = document.getElementsByClassName('Emoji--forText')
+        for (var i = 0; i < imgs.length; i++) {
+            if (imgs[i].src == PEPE_EMOJI) {
+                imgs[i].src = CORRECT_EMOJI;
+            }
+        }
+    } else if (window.location.host == "tweetdeck.twitter.com") {
+        var imgs = document.getElementsByClassName('emoji')
+        for (var i = 0; i < imgs.length; i++) {
+            if (imgs[i].src == TWEETDECK_EMOJI) {
+                imgs[i].src = CORRECT_EMOJI;
+            }
         }
     }
 }
 
-window.addEventListener('load', dePepeFy);
-window.addEventListener('scroll', dePepeFy);
+window.addEventListener('load', unPepefy);
+window.addEventListener('DOMSubtreeModified', unPepefy);
