@@ -17,32 +17,39 @@
 
 // Injected in the page, runs from there
 
-var PEPE_EMOJI = "https://abs.twimg.com/emoji/v2/72x72/1f438.png";
-var TWEETDECK_EMOJI = "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
-    + "/1f438.d0b91522fe.png";
+var TWITTER_PEPE_EMOJIS = [
+    "https://abs.twimg.com/emoji/v2/72x72/1f438.png",
+    "https://abs.twimg.com/emoji/v2/72x72/1f95b.png"
+];
+var TWEETDECK_PEPE_EMOJIS = [
+    "https://ton.twimg.com/tweetdeck-web/web/assets/emoji/1f438.d0b91522fe.png",
+    "https://ton.twimg.com/tweetdeck-web/web/assets/emoji/1f95b.c0e770ed7f.png"
+];
 var CORRECT_EMOJI = "https://abs.twimg.com/emoji/v2/72x72/1f4a9.png";
 
 var unPepefy = function() {
     if (window.location.host == "twitter.com") {
         var spans = document.getElementsByClassName('Emoji--forLinks');
         for (var i = 0; i < spans.length; i++) {
-            if (spans[i].style["background-image"]
-                == "url(\"" + PEPE_EMOJI + "\")")
-            {
-                spans[i].style["background-image"] =
-                    "url(\"" + CORRECT_EMOJI + "\")";
+            for (var pepe in TWITTER_PEPE_EMOJIS) {
+                if (spans[i].style["background-image"]
+                    == "url(\"" + TWITTER_PEPE_EMOJIS[pepe] + "\")")
+                {
+                    spans[i].style["background-image"] =
+                        "url(\"" + CORRECT_EMOJI + "\")";
+                }
             }
         }
         var imgs = document.getElementsByClassName('Emoji--forText')
         for (var i = 0; i < imgs.length; i++) {
-            if (imgs[i].src == PEPE_EMOJI) {
+            if (TWITTER_PEPE_EMOJIS.includes(imgs[i].src)) {
                 imgs[i].src = CORRECT_EMOJI;
             }
         }
     } else if (window.location.host == "tweetdeck.twitter.com") {
         var imgs = document.getElementsByClassName('emoji')
         for (var i = 0; i < imgs.length; i++) {
-            if (imgs[i].src == TWEETDECK_EMOJI) {
+            if (TWEETDECK_PEPE_EMOJIS.includes(imgs[i].src)) {
                 imgs[i].src = CORRECT_EMOJI;
             }
         }
