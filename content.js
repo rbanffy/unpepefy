@@ -21,14 +21,17 @@ var unPepefy = function() {
 
     this.TWITTER_PEPE_EMOJIS = [
         "https://abs.twimg.com/emoji/v2/72x72/1f438.png", // Pepe
-        "https://abs.twimg.com/emoji/v2/72x72/1f95b.png" // Milk glass
+        "https://abs.twimg.com/emoji/v2/72x72/1f95b.png", // Milk glass
+        "https://abs.twimg.com/emoji/v2/72x72/1f44c.png"  // OK
     ];
 
     this.TWEETDECK_PEPE_EMOJIS = [
         "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
             + "/1f438.d0b91522fe.png",
         "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
-            + "/1f95b.c0e770ed7f.png"
+            + "/1f95b.c0e770ed7f.png",
+        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
+            + "/1f44c.473b805d64.png"
     ];
 
     this.CORRECT_EMOJI = "https://abs.twimg.com/emoji/v2/72x72/1f4a9.png";
