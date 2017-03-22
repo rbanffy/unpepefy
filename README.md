@@ -8,3 +8,5 @@ The plugin can be installed from the Chrome Web Store, at
 https://chrome.google.com/webstore/detail/unpepefy/ldjnhcjpldbplikakcfkcmeblikfadpe
 and as a Mozilla Firefox Add-On at
 https://addons.mozilla.org/en-US/firefox/addon/unpepefy-making-twitter-great/.
+
+![](https://github.com/rbanffy/unpepefy/blob/master/screenshot2.png?raw=true)
