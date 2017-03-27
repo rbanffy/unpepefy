@@ -31,7 +31,9 @@ var unPepefy = function() {
         "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
             + "/1f95b.c0e770ed7f.png",
         "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
-            + "/1f44c.473b805d64.png"
+            + "/1f44c.473b805d64.png",
+        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
+            + "/1f44c-1f3fb.2cedf2cf1d.png"
     ];
 
     var CORRECT_EMOJI = "https://abs.twimg.com/emoji/v2/72x72/1f4a9.png";
