@@ -19,13 +19,13 @@
 
 var unPepefy = function() {
 
-    this.TWITTER_PEPE_EMOJIS = [
+    var TWITTER_PEPE_EMOJIS = [
         "https://abs.twimg.com/emoji/v2/72x72/1f438.png", // Pepe
         "https://abs.twimg.com/emoji/v2/72x72/1f95b.png", // Milk glass
         "https://abs.twimg.com/emoji/v2/72x72/1f44c.png"  // OK
     ];
 
-    this.TWEETDECK_PEPE_EMOJIS = [
+    var TWEETDECK_PEPE_EMOJIS = [
         "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
             + "/1f438.d0b91522fe.png",
         "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
@@ -34,31 +34,33 @@ var unPepefy = function() {
             + "/1f44c.473b805d64.png"
     ];
 
-    this.CORRECT_EMOJI = "https://abs.twimg.com/emoji/v2/72x72/1f4a9.png";
+    var CORRECT_EMOJI = "https://abs.twimg.com/emoji/v2/72x72/1f4a9.png";
 
-    if (window.location.host == "twitter.com") {
+    var host = window.location.host;
+
+    if (host == "twitter.com") {
         var spans = document.getElementsByClassName('Emoji--forLinks');
         for (var i = 0; i < spans.length; i++) {
-            for (var pepe in this.TWITTER_PEPE_EMOJIS) {
+            for (var pepe in TWITTER_PEPE_EMOJIS) {
                 if (spans[i].style["background-image"]
-                    == "url(\"" + this.TWITTER_PEPE_EMOJIS[pepe] + "\")")
+                    == "url(\"" + TWITTER_PEPE_EMOJIS[pepe] + "\")")
                 {
                     spans[i].style["background-image"] =
-                        "url(\"" + this.CORRECT_EMOJI + "\")";
+                        "url(\"" + CORRECT_EMOJI + "\")";
                 }
             }
         }
         var imgs = document.getElementsByClassName('Emoji--forText')
         for (var i = 0; i < imgs.length; i++) {
-            if (this.TWITTER_PEPE_EMOJIS.includes(imgs[i].src)) {
-                imgs[i].src = this.CORRECT_EMOJI;
+            if (TWITTER_PEPE_EMOJIS.includes(imgs[i].src)) {
+                imgs[i].src = CORRECT_EMOJI;
             }
         }
-    } else if (window.location.host == "tweetdeck.twitter.com") {
+    } else if (host == "tweetdeck.twitter.com") {
         var imgs = document.getElementsByClassName('emoji')
         for (var i = 0; i < imgs.length; i++) {
-            if (this.TWEETDECK_PEPE_EMOJIS.includes(imgs[i].src)) {
-                imgs[i].src = this.CORRECT_EMOJI;
+            if (TWEETDECK_PEPE_EMOJIS.includes(imgs[i].src)) {
+                imgs[i].src = CORRECT_EMOJI;
             }
         }
     }
