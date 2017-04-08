@@ -43,6 +43,7 @@ var unPepefy = function() {
 
     if (host == "twitter.com") {
         var spans = document.getElementsByClassName('Emoji--forLinks');
+
         for (var i = 0; i < spans.length; i++) {
             for (var pepe in TWITTER_PEPE_EMOJIS) {
                 if (spans[i].style["background-image"]
@@ -53,7 +54,9 @@ var unPepefy = function() {
                 }
             }
         }
-        var imgs = document.getElementsByClassName('Emoji--forText')
+
+        var imgs = document.getElementsByClassName('Emoji--forText');
+
         for (var i = 0; i < imgs.length; i++) {
             if (imgs[i].tagName == "IMG"
                 && TWITTER_PEPE_EMOJIS.includes(imgs[i].src)) {
@@ -62,6 +65,7 @@ var unPepefy = function() {
         }
     } else if (host == "tweetdeck.twitter.com") {
         var imgs = document.getElementsByClassName('emoji')
+
         for (var i = 0; i < imgs.length; i++) {
             if (TWEETDECK_PEPE_EMOJIS.includes(imgs[i].src)) {
                 imgs[i].src = CORRECT_EMOJI;
