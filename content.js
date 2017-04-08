@@ -17,19 +17,33 @@
 
 // Injected in the page, runs from there
 
-var TWITTER_PEPE_EMOJIS = [
-    "https://abs.twimg.com/emoji/v2/72x72/1f438.png",
-    "https://abs.twimg.com/emoji/v2/72x72/1f95b.png"
-];
-var TWEETDECK_PEPE_EMOJIS = [
-    "https://ton.twimg.com/tweetdeck-web/web/assets/emoji/1f438.d0b91522fe.png",
-    "https://ton.twimg.com/tweetdeck-web/web/assets/emoji/1f95b.c0e770ed7f.png"
-];
-var CORRECT_EMOJI = "https://abs.twimg.com/emoji/v2/72x72/1f4a9.png";
-
 var unPepefy = function() {
-    if (window.location.host == "twitter.com") {
-        var spans = document.getElementsByClassName('Emoji--forLinks');
+
+    var TWITTER_PEPE_EMOJIS = [
+        "https://abs.twimg.com/emoji/v2/72x72/1f438.png", // Pepe
+        "https://abs.twimg.com/emoji/v2/72x72/1f95b.png", // Milk glass
+        "https://abs.twimg.com/emoji/v2/72x72/1f44c.png",  // OK
+        "https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fb.png" // OK, white
+    ];
+
+    var TWEETDECK_PEPE_EMOJIS = [
+        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
+            + "/1f438.d0b91522fe.png",
+        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
+            + "/1f95b.c0e770ed7f.png",
+        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
+            + "/1f44c.473b805d64.png",
+        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
+            + "/1f44c-1f3fb.2cedf2cf1d.png"
+    ];
+
+    var CORRECT_EMOJI = "https://abs.twimg.com/emoji/v2/72x72/1f4a9.png";
+
+    var host = window.location.host;
+
+    if (host == "twitter.com") {
+        var spans = document.getElementsByClassName('Emoji Emoji--forLinks');
+
         for (var i = 0; i < spans.length; i++) {
             for (var pepe in TWITTER_PEPE_EMOJIS) {
                 if (spans[i].style["background-image"]
@@ -40,14 +54,18 @@ var unPepefy = function() {
                 }
             }
         }
-        var imgs = document.getElementsByClassName('Emoji--forText')
+
+        var imgs = document.getElementsByClassName('Emoji Emoji--forText');
+
         for (var i = 0; i < imgs.length; i++) {
-            if (TWITTER_PEPE_EMOJIS.includes(imgs[i].src)) {
+            if (imgs[i].tagName == "IMG"
+                && TWITTER_PEPE_EMOJIS.includes(imgs[i].src)) {
                 imgs[i].src = CORRECT_EMOJI;
             }
         }
-    } else if (window.location.host == "tweetdeck.twitter.com") {
+    } else if (host == "tweetdeck.twitter.com") {
         var imgs = document.getElementsByClassName('emoji')
+
         for (var i = 0; i < imgs.length; i++) {
             if (TWEETDECK_PEPE_EMOJIS.includes(imgs[i].src)) {
                 imgs[i].src = CORRECT_EMOJI;
