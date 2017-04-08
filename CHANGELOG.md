@@ -1,5 +1,5 @@
-current
--------
+1.0.0
+-----
 - Moved constants inside the unPepefy function so they don't pollute the
   namespace.
 - Added the OK hand signal, which has been appropriated by neonazis.
