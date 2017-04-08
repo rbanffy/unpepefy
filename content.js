@@ -54,7 +54,8 @@ var unPepefy = function() {
         }
         var imgs = document.getElementsByClassName('Emoji--forText')
         for (var i = 0; i < imgs.length; i++) {
-            if (TWITTER_PEPE_EMOJIS.includes(imgs[i].src)) {
+            if (imgs[i].tagName == "IMG"
+                && TWITTER_PEPE_EMOJIS.includes(imgs[i].src)) {
                 imgs[i].src = CORRECT_EMOJI;
             }
         }
