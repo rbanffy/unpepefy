@@ -42,7 +42,7 @@ var unPepefy = function() {
     var host = window.location.host;
 
     if (host == "twitter.com") {
-        var spans = document.getElementsByClassName('Emoji--forLinks');
+        var spans = document.getElementsByClassName('Emoji Emoji--forLinks');
 
         for (var i = 0; i < spans.length; i++) {
             for (var pepe in TWITTER_PEPE_EMOJIS) {
@@ -55,7 +55,7 @@ var unPepefy = function() {
             }
         }
 
-        var imgs = document.getElementsByClassName('Emoji--forText');
+        var imgs = document.getElementsByClassName('Emoji Emoji--forText');
 
         for (var i = 0; i < imgs.length; i++) {
             if (imgs[i].tagName == "IMG"
