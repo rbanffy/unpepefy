@@ -23,7 +23,8 @@ var unPepefy = function() {
         "https://abs.twimg.com/emoji/v2/72x72/1f438.png", // Pepe
         "https://abs.twimg.com/emoji/v2/72x72/1f95b.png", // Milk glass
         "https://abs.twimg.com/emoji/v2/72x72/1f44c.png",  // OK
-        "https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fb.png" // OK, white
+        "https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fb.png", // OK, white
+        "https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fc.png"  // OK, medium
     ];
 
     var TWEETDECK_PEPE_EMOJIS = [
