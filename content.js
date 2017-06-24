@@ -19,7 +19,7 @@
 
 var unPepefy = function() {
 
-    var TWITTER_PEPE_EMOJIS = [
+    const TWITTER_PEPE_EMOJIS = [
         "https://abs.twimg.com/emoji/v2/72x72/1f438.png", // Pepe
         "https://abs.twimg.com/emoji/v2/72x72/1f95b.png", // Milk glass
         "https://abs.twimg.com/emoji/v2/72x72/1f44c.png",  // OK
@@ -27,20 +27,20 @@ var unPepefy = function() {
         "https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fc.png"  // OK, medium
     ];
 
-    var TWEETDECK_PEPE_EMOJIS = [
-        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
+    const TWEETDECK_PEPE_EMOJIS = [
+        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji" // Pepe
             + "/1f438.d0b91522fe.png",
-        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
+        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji" // Milk glass
             + "/1f95b.c0e770ed7f.png",
-        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
+        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji" // OK
             + "/1f44c.473b805d64.png",
-        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji"
+        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji" // Small OK
             + "/1f44c-1f3fb.2cedf2cf1d.png"
     ];
 
-    var CORRECT_EMOJI = "https://abs.twimg.com/emoji/v2/72x72/1f4a9.png";
+    const CORRECT_EMOJI = "https://abs.twimg.com/emoji/v2/72x72/1f4a9.png";
 
-    var host = window.location.host;
+    const host = window.location.host;
 
     if (host == "twitter.com") {
         var spans = document.getElementsByClassName('Emoji Emoji--forLinks');
