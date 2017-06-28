@@ -42,6 +42,37 @@ var unPepefy = function() {
 
     const host = window.location.host;
 
+    var unpepefyTipTimeout;  // Will be the timeout.
+
+    var unpepefyEnablePopUp = function (link) {
+        // start the AJAX request
+        console.log('enable popup');
+        unpepefyTipTimeout = setTimeout(unpepefyOpenPopUp, 1000);
+    };
+
+    var unpepefyOpenPopUp = function (link) {
+        // Position popup div and make it visible
+        UnpepefyTip.style.visibility = 'visible';
+        console.log('open popup');
+    };
+
+    var unpepefyDisableAndClosePopUp = function (link) {
+        clearTimeout(unpepefyTipTimeout);
+        UnpepefyTip.style.visibility = 'hidden';
+        // TODO: Erase the content
+        console.log('closed popup');
+    };
+
+    var unpepefyLinks = document.getElementsByClassName("ProfileHeaderCard-nameLink");
+
+    for (var i = 0; i < unpepefyLinks.length; i++) {
+        if (unpepefyLinks[i].unpepefied != true) {  // Avoid doing it more than once.
+            unpepefyLinks[i].addEventListener('mouseover', unpepefyEnablePopUp);
+            unpepefyLinks[i].addEventListener('mouseout', unpepefyDisableAndClosePopUp);
+            unpepefyLinks[i].unpepefied = true;
+        }
+    }
+
     if (host == "twitter.com") {
         var spans = document.getElementsByClassName('Emoji Emoji--forLinks');
 
@@ -77,3 +108,19 @@ var unPepefy = function() {
 
 window.addEventListener('load', unPepefy);
 window.addEventListener('DOMSubtreeModified', unPepefy);
+
+var UnpepefyTip;
+
+UnpepefyTip = document.createElement('div');
+UnpepefyTip.id = "unpepefyTip";
+UnpepefyTip.innerHTML = '<p><span id="unpepefyScore">1234</p>';
+document.body.insertBefore(UnpepefyTip, document.body.childNodes[0]);
+// This should be moved into a CSS
+UnpepefyTip.style.visibility = 'hidden';
+UnpepefyTip.style.position = 'fixed';
+UnpepefyTip.style.top = '150pt';
+UnpepefyTip.style.left = '15pt';
+UnpepefyTip.style.width = '100pt';
+UnpepefyTip.style.heigth = '60pt';
+UnpepefyTip.style.zIndex = 1000;
+UnpepefyTip.style.background = '#ffffa5';
