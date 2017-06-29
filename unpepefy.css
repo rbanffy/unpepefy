@@ -1,0 +1,14 @@
+#naziscore_tip {
+    visibility: hidden;
+    position: fixed;
+    display: block;
+    top: 150pt;
+    left: 15pt;
+    width: 100pt;
+    height: 60pt;
+    z-index: 1000;
+    background: #ffffa5;
+    color: black;
+    borderRadius: 5pt;
+    box-shadow: 10px 10px 50px -2px rgba(0,0,0,0.75);
+}
