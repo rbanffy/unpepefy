@@ -8,14 +8,17 @@
     "permissions": [
         "tabs",
         "https://twitter.com/*",
-        "https://tweetdeck.twitter.com/*"
+        "https://tweetdeck.twitter.com/*",
+        "https://naziscore.appspot.com/v1/screen_name/*/score.json"
     ],
+
     "icons": {
         "128": "icon128.png",
         "64": "icon64.png",
         "48": "icon48.png",
         "32": "icon32.png"
     },
+
     "content_scripts": [
         {
             "matches": [

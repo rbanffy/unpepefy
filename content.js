@@ -42,38 +42,64 @@ var unPepefy = function() {
 
     const host = window.location.host;
 
+    var nearestLink = function (element) {
+        if (element.tagName === 'A') {
+            return element;
+        }
+        while ((element = element.parentElement) && element.tagName !== 'A');
+        return element;
+    };
+
     var unpepefyTipTimeout;  // Will be the timeout.
 
-    var unpepefyEnablePopUp = function (link) {
-        // start the AJAX request
-        console.log('enable popup');
-        unpepefyTipTimeout = setTimeout(unpepefyOpenPopUp, 1000);
+    var unpepefyEnablePopUp = function (e) {
+        var target = nearestLink(e.target);
+        var url = target.href;
+        var screenName = url.substr(url.lastIndexOf('/') + 1);
+        var xhr = new XMLHttpRequest();
+        var url = 'https://naziscore.appspot.com/v1/screen_name/' + screenName + '/score.json';
+        console.log(url);
+        xhr.open('GET', url, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE &&
+                xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.score === undefined) {
+                    document.getElementById('unpepefyScore').innerHTML = 'calculating';
+                } else {
+                    document.getElementById('unpepefyScore').innerHTML = response.score;
+                }
+                console.log(response.screen_name + ': ' + response.score);
+            }
+        };
+        xhr.send();
+        unpepefyTipTimeout = setTimeout(function () { unpepefyOpenPopUp(e); }, 1000);
     };
 
-    var unpepefyOpenPopUp = function (link) {
+    var unpepefyOpenPopUp = function (e) {
+        UnpepefyTip.style.left = e.clientX + 'px';
+        UnpepefyTip.style.top = e.clientY + 'px';
         // Position popup div and make it visible
         UnpepefyTip.style.visibility = 'visible';
-        console.log('open popup');
     };
 
-    var unpepefyDisableAndClosePopUp = function (link) {
+    var unpepefyDisableAndClosePopUp = function (e) {
         clearTimeout(unpepefyTipTimeout);
+        document.getElementById('unpepefyScore').innerHTML = '';
         UnpepefyTip.style.visibility = 'hidden';
-        // TODO: Erase the content
-        console.log('closed popup');
     };
 
-    var unpepefyLinks = document.getElementsByClassName("ProfileHeaderCard-nameLink");
+    var unpepefyLinks = document.getElementsByClassName("account-link");
 
     for (var i = 0; i < unpepefyLinks.length; i++) {
-        if (unpepefyLinks[i].unpepefied != true) {  // Avoid doing it more than once.
+        if (unpepefyLinks[i].unpepefied !== true) {  // Avoid doing it more than once.
             unpepefyLinks[i].addEventListener('mouseover', unpepefyEnablePopUp);
             unpepefyLinks[i].addEventListener('mouseout', unpepefyDisableAndClosePopUp);
             unpepefyLinks[i].unpepefied = true;
         }
     }
 
-    if (host == "twitter.com") {
+    if (host === "twitter.com") {
         var spans = document.getElementsByClassName('Emoji Emoji--forLinks');
 
         for (var i = 0; i < spans.length; i++) {
@@ -90,12 +116,12 @@ var unPepefy = function() {
         var imgs = document.getElementsByClassName('Emoji Emoji--forText');
 
         for (var i = 0; i < imgs.length; i++) {
-            if (imgs[i].tagName == "IMG"
+            if (imgs[i].tagName === "IMG"
                 && TWITTER_PEPE_EMOJIS.includes(imgs[i].src)) {
                 imgs[i].src = CORRECT_EMOJI;
             }
         }
-    } else if (host == "tweetdeck.twitter.com") {
+    } else if (host === "tweetdeck.twitter.com") {
         var imgs = document.getElementsByClassName('emoji')
 
         for (var i = 0; i < imgs.length; i++) {
@@ -109,18 +135,22 @@ var unPepefy = function() {
 window.addEventListener('load', unPepefy);
 window.addEventListener('DOMSubtreeModified', unPepefy);
 
-var UnpepefyTip;
+var UnpepefyTip;  // Holds the tool tip
 
 UnpepefyTip = document.createElement('div');
 UnpepefyTip.id = "unpepefyTip";
-UnpepefyTip.innerHTML = '<p><span id="unpepefyScore">1234</p>';
+UnpepefyTip.innerHTML = '<p>Naziscore</p><p><span id="unpepefyScore">1234</p>';
 document.body.insertBefore(UnpepefyTip, document.body.childNodes[0]);
 // This should be moved into a CSS
 UnpepefyTip.style.visibility = 'hidden';
 UnpepefyTip.style.position = 'fixed';
+UnpepefyTip.style.display = 'block';
 UnpepefyTip.style.top = '150pt';
 UnpepefyTip.style.left = '15pt';
 UnpepefyTip.style.width = '100pt';
-UnpepefyTip.style.heigth = '60pt';
+UnpepefyTip.style.height = '60pt';
 UnpepefyTip.style.zIndex = 1000;
 UnpepefyTip.style.background = '#ffffa5';
+UnpepefyTip.style.foreground = 'black';
+UnpepefyTip.style.borderRadius = '5pt';
+UnpepefyTip.style.boxShadow = '10px 10px 50px -2px rgba(0,0,0,0.75)';
