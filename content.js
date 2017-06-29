@@ -42,59 +42,12 @@ var unPepefy = function() {
 
     const host = window.location.host;
 
-    var nearestLink = function (element) {
-        if (element.tagName === 'A') {
-            return element;
-        }
-        while ((element = element.parentElement) && element.tagName !== 'A');
-        return element;
-    };
-
-    var unpepefyTipTimeout;  // Will be the timeout.
-
-    var unpepefyEnablePopUp = function (e) {
-        var target = nearestLink(e.target);
-        var url = target.href;
-        var screenName = url.substr(url.lastIndexOf('/') + 1);
-        var xhr = new XMLHttpRequest();
-        var url = 'https://naziscore.appspot.com/v1/screen_name/' + screenName + '/score.json';
-        console.log(url);
-        xhr.open('GET', url, true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE &&
-                xhr.status === 200) {
-                var response = JSON.parse(xhr.responseText);
-                if (response.score === undefined) {
-                    document.getElementById('unpepefyScore').innerHTML = 'calculating';
-                } else {
-                    document.getElementById('unpepefyScore').innerHTML = response.score;
-                }
-                console.log(response.screen_name + ': ' + response.score);
-            }
-        };
-        xhr.send();
-        unpepefyTipTimeout = setTimeout(function () { unpepefyOpenPopUp(e); }, 1000);
-    };
-
-    var unpepefyOpenPopUp = function (e) {
-        UnpepefyTip.style.left = e.clientX + 'px';
-        UnpepefyTip.style.top = e.clientY + 'px';
-        // Position popup div and make it visible
-        UnpepefyTip.style.visibility = 'visible';
-    };
-
-    var unpepefyDisableAndClosePopUp = function (e) {
-        clearTimeout(unpepefyTipTimeout);
-        document.getElementById('unpepefyScore').innerHTML = '';
-        UnpepefyTip.style.visibility = 'hidden';
-    };
-
     var unpepefyLinks = document.getElementsByClassName("account-link");
 
     for (var i = 0; i < unpepefyLinks.length; i++) {
         if (unpepefyLinks[i].unpepefied !== true) {  // Avoid doing it more than once.
-            unpepefyLinks[i].addEventListener('mouseover', unpepefyEnablePopUp);
-            unpepefyLinks[i].addEventListener('mouseout', unpepefyDisableAndClosePopUp);
+            unpepefyLinks[i].addEventListener('mouseover', Naziscore.enablePopUp);
+            unpepefyLinks[i].addEventListener('mouseout', Naziscore.disableAndClosePopUp);
             unpepefyLinks[i].unpepefied = true;
         }
     }
@@ -132,5 +85,61 @@ var unPepefy = function() {
     }
 }
 
+var Naziscore = new Object();
+
+Naziscore.tip = document.createElement('div');
+Naziscore.tip.id = "naziscore_tip";
+
+Naziscore.tip.innerHTML = '<p>Naziscore</p><p><span id="unpepefy_score"></p>';
+document.body.insertBefore(Naziscore.tip, document.body.childNodes[0]);
+
+Naziscore.nearestLink = function (element) {
+    if (element.tagName === 'A') {
+        return element;
+    }
+    while ((element = element.parentElement) && element.tagName !== 'A');
+    return element;
+};
+
+// unpepefyTipTimeout;  // Will be the timeout.
+
+Naziscore.enablePopUp = function (e) {
+    var target = Naziscore.nearestLink(e.target);
+    var url = target.href;
+    var screenName = url.substr(url.lastIndexOf('/') + 1);
+    var xhr = new XMLHttpRequest();
+    var url = 'https://naziscore.appspot.com/v1/screen_name/' + screenName + '/score.json';
+    console.log(url);
+    xhr.open('GET', url, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE &&
+            xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            if (response.score === undefined) {
+                document.getElementById('unpepefy_score').innerHTML = 'calculating';
+            } else {
+                document.getElementById('unpepefy_score').innerHTML = response.score;
+            }
+            console.log(response.screen_name + ': ' + response.score);
+        }
+    };
+    xhr.send();
+    Naziscore.unpepefyTipTimeout = setTimeout(function () { Naziscore.openPopUp(e); }, 1000);
+};
+
+Naziscore.openPopUp = function (e) {
+    Naziscore.tip.style.left = e.clientX + 'px';
+    Naziscore.tip.style.top = e.clientY + 'px';
+    // Position popup div and make it visible
+    Naziscore.tip.style.visibility = 'visible';
+};
+
+Naziscore.disableAndClosePopUp = function (e) {
+    clearTimeout(Naziscore.unpepefyTipTimeout);
+    document.getElementById('unpepefy_score').innerHTML = '';
+    Naziscore.tip.style.visibility = 'hidden';
+};
+
+// These have to be the last things we do here. They set everything else in motion.
 window.addEventListener('load', unPepefy);
 window.addEventListener('DOMSubtreeModified', unPepefy);
