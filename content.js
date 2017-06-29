@@ -134,23 +134,3 @@ var unPepefy = function() {
 
 window.addEventListener('load', unPepefy);
 window.addEventListener('DOMSubtreeModified', unPepefy);
-
-var UnpepefyTip;  // Holds the tool tip
-
-UnpepefyTip = document.createElement('div');
-UnpepefyTip.id = "unpepefyTip";
-UnpepefyTip.innerHTML = '<p>Naziscore</p><p><span id="unpepefyScore">1234</p>';
-document.body.insertBefore(UnpepefyTip, document.body.childNodes[0]);
-// This should be moved into a CSS
-UnpepefyTip.style.visibility = 'hidden';
-UnpepefyTip.style.position = 'fixed';
-UnpepefyTip.style.display = 'block';
-UnpepefyTip.style.top = '150pt';
-UnpepefyTip.style.left = '15pt';
-UnpepefyTip.style.width = '100pt';
-UnpepefyTip.style.height = '60pt';
-UnpepefyTip.style.zIndex = 1000;
-UnpepefyTip.style.background = '#ffffa5';
-UnpepefyTip.style.foreground = 'black';
-UnpepefyTip.style.borderRadius = '5pt';
-UnpepefyTip.style.boxShadow = '10px 10px 50px -2px rgba(0,0,0,0.75)';
