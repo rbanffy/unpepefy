@@ -109,11 +109,15 @@ var unPepefy = function() {
 
 var Naziscore = new Object();
 
+Naziscore.cache = new Object();
+
 Naziscore.tip = document.createElement('div');
 Naziscore.tip.id = "naziscore_tip";
 
 Naziscore.tip.innerHTML = '<p>Naziscore</p><p><span id="unpepefy_score"></p>';
 document.body.insertBefore(Naziscore.tip, document.body.childNodes[0]);
+
+Naziscore.unpepefyScore = document.getElementById('unpepefy_score');
 
 Naziscore.nearestLink = function (element) {
     if (element.tagName === 'A') {
@@ -123,29 +127,30 @@ Naziscore.nearestLink = function (element) {
     return element;
 };
 
-// unpepefyTipTimeout;  // Will be the timeout.
-
 Naziscore.enablePopUp = function (e) {
     var target = Naziscore.nearestLink(e.target);
     var url = target.href;
     var screenName = url.substr(url.lastIndexOf('/') + 1);
-    var xhr = new XMLHttpRequest();
-    var url = 'https://naziscore.appspot.com/v1/screen_name/' + screenName + '/score.json';
-    console.log(url);
-    xhr.open('GET', url, true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE &&
-            xhr.status === 200) {
-            var response = JSON.parse(xhr.responseText);
-            if (response.score === undefined) {
-                document.getElementById('unpepefy_score').innerHTML = 'calculating';
-            } else {
-                document.getElementById('unpepefy_score').innerHTML = response.score;
+    if (Naziscore.cache[screenName] === undefined) {
+        var xhr = new XMLHttpRequest();
+        var url = 'https://naziscore.appspot.com/v1/screen_name/' + screenName + '/score.json';
+        xhr.open('GET', url, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE &&
+                xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.score === undefined) {
+                    Naziscore.unpepefyScore.innerHTML = 'calculating';
+                } else {
+                    Naziscore.cache[screenName] = response.score;
+                    Naziscore.unpepefyScore.innerHTML = response.score;
+                }
             }
-            console.log(response.screen_name + ': ' + response.score);
-        }
-    };
-    xhr.send();
+        };
+        xhr.send();
+    } else {
+        Naziscore.unpepefyScore.innerHTML = Naziscore.cache[screenName];
+    }
     Naziscore.unpepefyTipTimeout = setTimeout(function () { Naziscore.openPopUp(e); }, 1000);
 };
 
