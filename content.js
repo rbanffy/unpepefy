@@ -155,9 +155,9 @@ Naziscore.enablePopUp = function (e) {
 };
 
 Naziscore.openPopUp = function (e) {
-    Naziscore.tip.style.left = e.clientX + 'px';
-    Naziscore.tip.style.top = e.clientY + 'px';
-    // Position popup div and make it visible
+    var r = e.target.getBoundingClientRect();
+    Naziscore.tip.style.left = (r.left + r.right) / 2 + 'px';
+    Naziscore.tip.style.top = r.bottom + 'px';
     Naziscore.tip.style.visibility = 'visible';
 };
 
