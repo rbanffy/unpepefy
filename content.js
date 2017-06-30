@@ -42,7 +42,29 @@ var unPepefy = function() {
 
     const host = window.location.host;
 
-    var unpepefyLinks = document.getElementsByClassName("account-link");
+    var unpepefyLinks;
+
+    if (host === "twitter.com") {
+        unpepefyLinks = Array.prototype.slice.call(
+            document.getElementsByClassName(
+                'ProfileHeaderCard-nameLink u-textInheritColor js-nav'), 0);
+        unpepefyLinks.concat(Array.prototype.slice.call(
+            document.getElementsByClassName(
+                'fullname ProfileNameTruncated-link u-textInheritColor js-nav'), 0));
+        unpepefyLinks.concat(Array.prototype.slice.call(
+            document.getElementsByClassName('fullname show-popup-with-id'), 0));
+        unpepefyLinks.concat(Array.prototype.slice.call(
+            document.getElementsByClassName('twitter-atreply pretty-link js-nav'), 0));
+    } else if (host === "tweetdeck.twitter.com") {
+        unpepefyLinks = Array.prototype.slice.call(
+            document.getElementsByClassName('account-link'), 0);
+        unpepefyLinks.concat(Array.prototype.slice.call(
+            document.getElementsByClassName('js-user-profile-link'), 0));
+        unpepefyLinks.concat(Array.prototype.slice.call(
+            document.getElementsByClassName('link-complex-target'), 0));
+        unpepefyLinks.concat(Array.prototype.slice.call(
+            document.getElementsByClassName('js-action-url'), 0));
+    }
 
     for (var i = 0; i < unpepefyLinks.length; i++) {
         if (unpepefyLinks[i].unpepefied !== true) {  // Avoid doing it more than once.
