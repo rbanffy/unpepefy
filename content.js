@@ -128,10 +128,16 @@ Naziscore.nearestLink = function (element) {
 };
 
 Naziscore.enablePopUp = function (e) {
+    // Move the pop-up to its new place (it's hidden now).
+    var r = e.target.getBoundingClientRect();
+    Naziscore.tip.style.left = (r.left + r.right) / 2 + 'px';
+    Naziscore.tip.style.top = r.bottom + 'px';
+
+    // Start an async fetch.
     var target = Naziscore.nearestLink(e.target);
     var url = target.href;
     var screenName = url.substr(url.lastIndexOf('/') + 1);
-    if (Naziscore.cache[screenName] === undefined) {
+    if (Naziscore.cache[screenName] === undefined) {  // The score is not cached yet.
         var xhr = new XMLHttpRequest();
         var url = 'https://naziscore.appspot.com/v1/screen_name/' + screenName + '/score.json';
         xhr.open('GET', url, true);
@@ -155,16 +161,14 @@ Naziscore.enablePopUp = function (e) {
 };
 
 Naziscore.openPopUp = function (e) {
-    var r = e.target.getBoundingClientRect();
-    Naziscore.tip.style.left = (r.left + r.right) / 2 + 'px';
-    Naziscore.tip.style.top = r.bottom + 'px';
+    // Just make the popup visible - it's moved when the fetch is triggered.
     Naziscore.tip.style.visibility = 'visible';
 };
 
 Naziscore.disableAndClosePopUp = function (e) {
     clearTimeout(Naziscore.unpepefyTipTimeout);
-    document.getElementById('unpepefy_score').innerHTML = '';
     Naziscore.tip.style.visibility = 'hidden';
+    Naziscore.unpepefyScore.innerHTML = '';
 };
 
 // These have to be the last things we do here. They set everything else in motion.
