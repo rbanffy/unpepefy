@@ -5,9 +5,9 @@
     top: 150pt;
     left: 15pt;
     width: 100pt;
-    height: 60pt;
+    height: 30pt;
     z-index: 1000;
-    background: #ffffa5;
+    background: #d6d7d8;
     color: black;
     borderRadius: 5pt;
     box-shadow: 10px 10px 50px -2px rgba(0,0,0,0.75);

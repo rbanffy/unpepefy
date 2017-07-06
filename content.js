@@ -114,7 +114,7 @@ Naziscore.cache = new Object();
 Naziscore.tip = document.createElement('div');
 Naziscore.tip.id = "naziscore_tip";
 
-Naziscore.tip.innerHTML = '<p>Naziscore</p><p><span id="unpepefy_score"></p>';
+Naziscore.tip.innerHTML = '<p id="unpepefy_title">Score</p><p><span id="unpepefy_score"></p>';
 document.body.insertBefore(Naziscore.tip, document.body.childNodes[0]);
 
 Naziscore.unpepefyScore = document.getElementById('unpepefy_score');
