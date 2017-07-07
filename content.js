@@ -20,31 +20,31 @@
 var unPepefy = function() {
 
     const TWITTER_PEPE_EMOJIS = [
-        "https://abs.twimg.com/emoji/v2/72x72/1f438.png", // Pepe
-        "https://abs.twimg.com/emoji/v2/72x72/1f95b.png", // Milk glass
-        "https://abs.twimg.com/emoji/v2/72x72/1f44c.png",  // OK
-        "https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fb.png", // OK, white
-        "https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fc.png"  // OK, medium
+        'https://abs.twimg.com/emoji/v2/72x72/1f438.png', // Pepe
+        'https://abs.twimg.com/emoji/v2/72x72/1f95b.png', // Milk glass
+        'https://abs.twimg.com/emoji/v2/72x72/1f44c.png',  // OK
+        'https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fb.png', // OK, white
+        'https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fc.png'  // OK, medium
     ];
 
     const TWEETDECK_PEPE_EMOJIS = [
-        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji" // Pepe
-            + "/1f438.d0b91522fe.png",
-        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji" // Milk glass
-            + "/1f95b.c0e770ed7f.png",
-        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji" // OK
-            + "/1f44c.473b805d64.png",
-        "https://ton.twimg.com/tweetdeck-web/web/assets/emoji" // Small OK
-            + "/1f44c-1f3fb.2cedf2cf1d.png"
+        'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Pepe
+            + '/1f438.d0b91522fe.png',
+        'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Milk glass
+            + '/1f95b.c0e770ed7f.png',
+        'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // OK
+            + '/1f44c.473b805d64.png',
+        'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Small OK
+            + '/1f44c-1f3fb.2cedf2cf1d.png'
     ];
 
-    const CORRECT_EMOJI = "https://abs.twimg.com/emoji/v2/72x72/1f4a9.png";
+    const CORRECT_EMOJI = 'https://abs.twimg.com/emoji/v2/72x72/1f4a9.png';
 
     const host = window.location.host;
 
     var unpepefyLinks;
 
-    if (host === "twitter.com") {
+    if (host === 'twitter.com') {
         unpepefyLinks = Array.prototype.slice.call(
             document.getElementsByClassName(
                 'ProfileHeaderCard-nameLink u-textInheritColor js-nav'), 0);
@@ -55,7 +55,7 @@ var unPepefy = function() {
             document.getElementsByClassName('fullname show-popup-with-id'), 0));
         unpepefyLinks.concat(Array.prototype.slice.call(
             document.getElementsByClassName('twitter-atreply pretty-link js-nav'), 0));
-    } else if (host === "tweetdeck.twitter.com") {
+    } else if (host === 'tweetdeck.twitter.com') {
         unpepefyLinks = Array.prototype.slice.call(
             document.getElementsByClassName('account-link'), 0);
         unpepefyLinks.concat(Array.prototype.slice.call(
@@ -74,45 +74,45 @@ var unPepefy = function() {
         }
     }
 
-    if (host === "twitter.com") {
+    if (host === 'twitter.com') {
         var spans = document.getElementsByClassName('Emoji Emoji--forLinks');
 
-        for (var i = 0; i < spans.length; i++) {
+        for (i = 0; i < spans.length; i++) {
             for (var pepe in TWITTER_PEPE_EMOJIS) {
-                if (spans[i].style["background-image"]
-                    == "url(\"" + TWITTER_PEPE_EMOJIS[pepe] + "\")")
+                if (spans[i].style['background-image']
+                    == 'url(\'' + TWITTER_PEPE_EMOJIS[pepe] + '\')')
                 {
-                    spans[i].style["background-image"] =
-                        "url(\"" + CORRECT_EMOJI + "\")";
+                    spans[i].style['background-image'] =
+                        'url(\'' + CORRECT_EMOJI + '\')';
                 }
             }
         }
 
         var imgs = document.getElementsByClassName('Emoji Emoji--forText');
 
-        for (var i = 0; i < imgs.length; i++) {
-            if (imgs[i].tagName === "IMG"
+        for (i = 0; i < imgs.length; i++) {
+            if (imgs[i].tagName === 'IMG'
                 && TWITTER_PEPE_EMOJIS.includes(imgs[i].src)) {
                 imgs[i].src = CORRECT_EMOJI;
             }
         }
-    } else if (host === "tweetdeck.twitter.com") {
-        var imgs = document.getElementsByClassName('emoji')
+    } else if (host === 'tweetdeck.twitter.com') {
+        imgs = document.getElementsByClassName('emoji');
 
-        for (var i = 0; i < imgs.length; i++) {
+        for (i = 0; i < imgs.length; i++) {
             if (TWEETDECK_PEPE_EMOJIS.includes(imgs[i].src)) {
                 imgs[i].src = CORRECT_EMOJI;
             }
         }
     }
-}
+};
 
 var Naziscore = new Object();
 
 Naziscore.cache = new Object();
 
 Naziscore.tip = document.createElement('div');
-Naziscore.tip.id = "naziscore_tip";
+Naziscore.tip.id = 'naziscore_tip';
 
 Naziscore.tip.innerHTML = '<p id="unpepefy_title">Score</p><p><span id="unpepefy_score"></p>';
 document.body.insertBefore(Naziscore.tip, document.body.childNodes[0]);
@@ -135,8 +135,8 @@ Naziscore.enablePopUp = function (e) {
 
     // Start an async fetch.
     var target = Naziscore.nearestLink(e.target);
-    var url = target.href;
-    var screenName = url.substr(url.lastIndexOf('/') + 1);
+    var target_url = target.href;
+    var screenName = target_url.substr(target_url.lastIndexOf('/') + 1);
     if (Naziscore.cache[screenName] === undefined) {  // The score is not cached yet.
         var xhr = new XMLHttpRequest();
         var url = 'https://naziscore.appspot.com/v1/screen_name/' + screenName + '/score.json';
@@ -160,12 +160,12 @@ Naziscore.enablePopUp = function (e) {
     Naziscore.unpepefyTipTimeout = setTimeout(function () { Naziscore.openPopUp(e); }, 1000);
 };
 
-Naziscore.openPopUp = function (e) {
+Naziscore.openPopUp = function () {
     // Just make the popup visible - it's moved when the fetch is triggered.
     Naziscore.tip.style.visibility = 'visible';
 };
 
-Naziscore.disableAndClosePopUp = function (e) {
+Naziscore.disableAndClosePopUp = function () {
     clearTimeout(Naziscore.unpepefyTipTimeout);
     Naziscore.tip.style.visibility = 'hidden';
     Naziscore.unpepefyScore.innerHTML = '';
