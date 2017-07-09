@@ -1,3 +1,7 @@
+2.0.0
+-----
+- Integration with Naziscore.
+
 1.0.0
 -----
 - Moved constants inside the unPepefy function so they don't pollute the
