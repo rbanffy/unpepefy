@@ -114,7 +114,7 @@ Naziscore.cache = new Object();
 Naziscore.tip = document.createElement('div');
 Naziscore.tip.id = 'naziscore_tip';
 
-Naziscore.tip.innerHTML = '<p id="unpepefy_title">Score</p><p><span id="unpepefy_score"></p>';
+Naziscore.tip.innerHTML = '<p><span id="unpepefy_score"></p>';
 document.body.insertBefore(Naziscore.tip, document.body.childNodes[0]);
 
 Naziscore.unpepefyScore = document.getElementById('unpepefy_score');
@@ -146,16 +146,16 @@ Naziscore.enablePopUp = function (e) {
                 xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
                 if (response.score === undefined) {
-                    Naziscore.unpepefyScore.innerHTML = 'calculating';
+                    Naziscore.disableAndClosePopUp();
                 } else {
                     Naziscore.cache[screenName] = response.score;
-                    Naziscore.unpepefyScore.innerHTML = response.score;
+                    Naziscore.unpepefyScore.innerHTML = Naziscore.scoreToShits(response.score);
                 }
             }
         };
         xhr.send();
     } else {
-        Naziscore.unpepefyScore.innerHTML = Naziscore.cache[screenName];
+        Naziscore.unpepefyScore.innerHTML = Naziscore.scoreToShits(Naziscore.cache[screenName]);
     }
     Naziscore.unpepefyTipTimeout = setTimeout(function () { Naziscore.openPopUp(e); }, 1000);
 };
@@ -169,6 +169,21 @@ Naziscore.disableAndClosePopUp = function () {
     clearTimeout(Naziscore.unpepefyTipTimeout);
     Naziscore.tip.style.visibility = 'hidden';
     Naziscore.unpepefyScore.innerHTML = '';
+};
+
+Naziscore.scoreToShits = function (score) {
+    const host = window.location.host;
+    var shits = '';
+    if (host === 'twitter.com') {
+        var shit = '<span class="Emoji Emoji--forLinks" style="background-image:url(\'https://abs.twimg.com/emoji/v2/72x72/1f438.png\')" title="Frog face" aria-label="Emoji: Frog face">&nbsp;</span>';
+    } else if (host === 'tweetdeck.twitter.com') {
+        var shit = '<img alt="🐸" class="naziscore_pepe" src="https://abs.twimg.com/emoji/v2/72x72/1f4a9.png">';
+        var unshit = '<img alt="🐸" class="naziscore_pepe" src="' + chrome.extension.getURL('unpepe.png') + '">';
+    }
+    for (var i = 1; i <= 5; i++) {
+        shits += i <= score - 1 ? shit : unshit;
+    }
+    return shits + '<!-- ' + score + ' -->'
 };
 
 // These have to be the last things we do here. They set everything else in motion.
