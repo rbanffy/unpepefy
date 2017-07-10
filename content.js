@@ -174,16 +174,18 @@ Naziscore.disableAndClosePopUp = function () {
 Naziscore.scoreToShits = function (score) {
     const host = window.location.host;
     var shits = '';
+    var shit;
+    var unshit;
     if (host === 'twitter.com') {
-        var shit = '<span class="Emoji Emoji--forLinks" style="background-image:url(\'https://abs.twimg.com/emoji/v2/72x72/1f438.png\')" title="Frog face" aria-label="Emoji: Frog face">&nbsp;</span>';
+        shit = '<span class="Emoji Emoji--forLinks" style="background-image:url(\'https://abs.twimg.com/emoji/v2/72x72/1f438.png\')" title="Frog face" aria-label="Emoji: Frog face">&nbsp;</span>';
     } else if (host === 'tweetdeck.twitter.com') {
-        var shit = '<img alt="🐸" class="naziscore_pepe" src="https://abs.twimg.com/emoji/v2/72x72/1f4a9.png">';
-        var unshit = '<img alt="🐸" class="naziscore_pepe" src="' + chrome.extension.getURL('unpepe.png') + '">';
+        shit = '<img alt="🐸" class="naziscore_pepe" src="https://abs.twimg.com/emoji/v2/72x72/1f4a9.png">';
+        unshit = '<img alt="🐸" class="naziscore_pepe" src="' + chrome.extension.getURL('unpepe.png') + '">';
     }
     for (var i = 1; i <= 5; i++) {
         shits += i <= score - 1 ? shit : unshit;
     }
-    return shits + '<!-- ' + score + ' -->'
+    return shits + '<!-- ' + score + ' -->';
 };
 
 // These have to be the last things we do here. They set everything else in motion.
