@@ -146,7 +146,8 @@ Naziscore.enablePopUp = function (e) {
                 xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
                 if (response.score === undefined) {
-                    Naziscore.disableAndClosePopUp();
+                    Naziscore.unpepefyScore.innerHTML = '<img alt="🐸" class="naziscore_pepe" src="https://ton.twimg.com/tweetdeck-web/web/assets/global/backgrounds/spinner_small_trans.de7dc51b0d.gif">';
+                    Naziscore.unpepefyTipTimeout = setTimeout(function () { Naziscore.disableAndClosePopUp(e); }, 3000);
                 } else {
                     Naziscore.cache[screenName] = response.score;
                     Naziscore.unpepefyScore.innerHTML = Naziscore.scoreToShits(response.score);
@@ -177,6 +178,9 @@ Naziscore.scoreToShits = function (score) {
     var shit;
     var unshit;
     if (host === 'twitter.com') {
+        // Probably something different will be needed here - maybe
+        // something with
+        // document.getElementById("profile-hover-container")
         shit = '<span class="Emoji Emoji--forLinks" style="background-image:url(\'https://abs.twimg.com/emoji/v2/72x72/1f438.png\')" title="Frog face" aria-label="Emoji: Frog face">&nbsp;</span>';
     } else if (host === 'tweetdeck.twitter.com') {
         shit = '<img alt="🐸" class="naziscore_pepe" src="https://abs.twimg.com/emoji/v2/72x72/1f4a9.png">';
