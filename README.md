@@ -18,3 +18,5 @@ and as a Mozilla Firefox Add-On at
 https://addons.mozilla.org/en-US/firefox/addon/unpepefy-making-twitter-great/.
 
 ![](https://github.com/rbanffy/unpepefy/blob/master/screenshot2.png?raw=true)
+
+![](https://github.com/rbanffy/unpepefy/blob/master/screenshot9.png?raw=true)
