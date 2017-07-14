@@ -17,73 +17,43 @@
 
 // Injected in the page, runs from there
 
+
 var unPepefy = function() {
-
-    const TWITTER_PEPE_EMOJIS = [
-        'https://abs.twimg.com/emoji/v2/72x72/1f438.png', // Pepe
-        'https://abs.twimg.com/emoji/v2/72x72/1f95b.png', // Milk glass
-        'https://abs.twimg.com/emoji/v2/72x72/1f44c.png',  // OK
-        'https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fb.png', // OK, white
-        'https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fc.png'  // OK, medium
-    ];
-
-    const TWEETDECK_PEPE_EMOJIS = [
-        'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Pepe
-            + '/1f438.d0b91522fe.png',
-        'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Milk glass
-            + '/1f95b.c0e770ed7f.png',
-        'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // OK
-            + '/1f44c.473b805d64.png',
-        'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Small OK
-            + '/1f44c-1f3fb.2cedf2cf1d.png'
-    ];
-
-    const CORRECT_EMOJI = 'https://abs.twimg.com/emoji/v2/72x72/1f4a9.png';
-
-    const host = window.location.host;
 
     var unpepefyLinks;
 
-    if (host === 'twitter.com') {
+    if (Naziscore.HOST === 'twitter.com') {
         unpepefyLinks = Array.prototype.slice.call(
             document.getElementsByClassName(
                 'ProfileHeaderCard-nameLink u-textInheritColor js-nav'), 0);
-        unpepefyLinks.concat(Array.prototype.slice.call(
-            document.getElementsByClassName(
-                'fullname ProfileNameTruncated-link u-textInheritColor js-nav'), 0));
-        unpepefyLinks.concat(Array.prototype.slice.call(
-            document.getElementsByClassName('fullname show-popup-with-id'), 0));
-        unpepefyLinks.concat(Array.prototype.slice.call(
-            document.getElementsByClassName('twitter-atreply pretty-link js-nav'), 0));
-    } else if (host === 'tweetdeck.twitter.com') {
+    } else if (Naziscore.HOST === 'tweetdeck.twitter.com') {
         unpepefyLinks = Array.prototype.slice.call(
             document.getElementsByClassName('account-link'), 0);
         unpepefyLinks.concat(Array.prototype.slice.call(
-            document.getElementsByClassName('js-user-profile-link'), 0));
-        unpepefyLinks.concat(Array.prototype.slice.call(
-            document.getElementsByClassName('link-complex-target'), 0));
-        unpepefyLinks.concat(Array.prototype.slice.call(
-            document.getElementsByClassName('js-action-url'), 0));
+            document.getElementsByClassName(
+                'fullname link-complex-target'), 0));
     }
 
     for (var i = 0; i < unpepefyLinks.length; i++) {
         if (unpepefyLinks[i].unpepefied !== true) {  // Avoid doing it more than once.
-            unpepefyLinks[i].addEventListener('mouseover', Naziscore.enablePopUp);
-            unpepefyLinks[i].addEventListener('mouseout', Naziscore.disableAndClosePopUp);
+            unpepefyLinks[i].addEventListener(
+                'mouseover', Naziscore.enablePopUp);
+            unpepefyLinks[i].addEventListener(
+                'mouseout', Naziscore.disableAndClosePopUp);
             unpepefyLinks[i].unpepefied = true;
         }
     }
 
-    if (host === 'twitter.com') {
+    if (Naziscore.HOST === 'twitter.com') {
         var spans = document.getElementsByClassName('Emoji Emoji--forLinks');
 
         for (i = 0; i < spans.length; i++) {
-            for (var pepe in TWITTER_PEPE_EMOJIS) {
+            for (var pepe in Naziscore.TWITTER_PEPE_EMOJIS) {
                 if (spans[i].style['background-image']
-                    == 'url(\'' + TWITTER_PEPE_EMOJIS[pepe] + '\')')
+                    == 'url(\'' + Naziscore.TWITTER_PEPE_EMOJIS[pepe] + '\')')
                 {
                     spans[i].style['background-image'] =
-                        'url(\'' + CORRECT_EMOJI + '\')';
+                        'url(\'' + Naziscore.CORRECT_EMOJI + '\')';
                 }
             }
         }
@@ -92,22 +62,45 @@ var unPepefy = function() {
 
         for (i = 0; i < imgs.length; i++) {
             if (imgs[i].tagName === 'IMG'
-                && TWITTER_PEPE_EMOJIS.includes(imgs[i].src)) {
-                imgs[i].src = CORRECT_EMOJI;
+                && Naziscore.TWITTER_PEPE_EMOJIS.includes(imgs[i].src)) {
+                imgs[i].src = Naziscore.CORRECT_EMOJI;
             }
         }
-    } else if (host === 'tweetdeck.twitter.com') {
+    } else if (Naziscore.HOST === 'tweetdeck.twitter.com') {
         imgs = document.getElementsByClassName('emoji');
 
         for (i = 0; i < imgs.length; i++) {
-            if (TWEETDECK_PEPE_EMOJIS.includes(imgs[i].src)) {
-                imgs[i].src = CORRECT_EMOJI;
+            if (Naziscore.TWEETDECK_PEPE_EMOJIS.includes(imgs[i].src)) {
+                imgs[i].src = Naziscore.CORRECT_EMOJI;
             }
         }
     }
 };
 
 var Naziscore = new Object();
+
+Naziscore.TWITTER_PEPE_EMOJIS = [
+    'https://abs.twimg.com/emoji/v2/72x72/1f438.png', // Pepe
+    'https://abs.twimg.com/emoji/v2/72x72/1f95b.png', // Milk glass
+    'https://abs.twimg.com/emoji/v2/72x72/1f44c.png',  // OK
+    'https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fb.png', // OK, white
+    'https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fc.png'  // OK, medium
+];
+
+Naziscore.TWEETDECK_PEPE_EMOJIS = [
+    'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Pepe
+        + '/1f438.d0b91522fe.png',
+    'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Milk glass
+        + '/1f95b.c0e770ed7f.png',
+    'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // OK
+        + '/1f44c.473b805d64.png',
+    'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Small OK
+        + '/1f44c-1f3fb.2cedf2cf1d.png'
+];
+
+Naziscore.CORRECT_EMOJI = 'https://abs.twimg.com/emoji/v2/72x72/1f4a9.png';
+
+Naziscore.HOST = window.location.host;
 
 Naziscore.cache = new Object();
 
@@ -127,6 +120,27 @@ Naziscore.nearestLink = function (element) {
     return element;
 };
 
+Naziscore.onReadyStateChange = function(e) {
+    var xhr = e.target;
+    if (xhr.readyState === XMLHttpRequest.DONE &&
+        xhr.status === 200) {
+        var response = JSON.parse(xhr.responseText);
+        if (response.score === undefined) {
+            Naziscore.unpepefyScore.innerHTML = '<img alt="🐸" '
+                + 'class="naziscore_pepe" src="https://ton.twimg.com/'
+                + 'tweetdeck-web/web/assets/global/backgrounds/'
+                + 'spinner_small_trans.de7dc51b0d.gif">';
+            Naziscore.unpepefyTipTimeout = setTimeout(
+                function () { Naziscore.disableAndClosePopUp(e); }, 3000);
+        } else {
+            var screenName = xhr.responseURL.split('/')[5];
+            Naziscore.cache[screenName] = response.score;
+            Naziscore.unpepefyScore.innerHTML = Naziscore.scoreToShits(
+                response.score);
+        }
+    }
+};
+
 Naziscore.enablePopUp = function (e) {
     // Move the pop-up to its new place (it's hidden now).
     var r = e.target.getBoundingClientRect();
@@ -135,30 +149,24 @@ Naziscore.enablePopUp = function (e) {
 
     // Start an async fetch.
     var target = Naziscore.nearestLink(e.target);
+    if (target === null) {
+        console.log('aqui!!!');
+    }
     var target_url = target.href;
     var screenName = target_url.substr(target_url.lastIndexOf('/') + 1);
-    if (Naziscore.cache[screenName] === undefined) {  // The score is not cached yet.
+    if (Naziscore.cache[screenName] === undefined) {  // Score not cached yet.
         var xhr = new XMLHttpRequest();
-        var url = 'https://naziscore.appspot.com/v1/screen_name/' + screenName + '/score.json';
+        var url = 'https://naziscore.appspot.com/v1/screen_name/'
+            + screenName + '/score.json';
         xhr.open('GET', url, true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE &&
-                xhr.status === 200) {
-                var response = JSON.parse(xhr.responseText);
-                if (response.score === undefined) {
-                    Naziscore.unpepefyScore.innerHTML = '<img alt="🐸" class="naziscore_pepe" src="https://ton.twimg.com/tweetdeck-web/web/assets/global/backgrounds/spinner_small_trans.de7dc51b0d.gif">';
-                    Naziscore.unpepefyTipTimeout = setTimeout(function () { Naziscore.disableAndClosePopUp(e); }, 3000);
-                } else {
-                    Naziscore.cache[screenName] = response.score;
-                    Naziscore.unpepefyScore.innerHTML = Naziscore.scoreToShits(response.score);
-                }
-            }
-        };
+        xhr.onreadystatechange = Naziscore.onReadyStateChange;
         xhr.send();
     } else {
-        Naziscore.unpepefyScore.innerHTML = Naziscore.scoreToShits(Naziscore.cache[screenName]);
+        Naziscore.unpepefyScore.innerHTML = Naziscore.scoreToShits(
+            Naziscore.cache[screenName]);
     }
-    Naziscore.unpepefyTipTimeout = setTimeout(function () { Naziscore.openPopUp(e); }, 1000);
+    Naziscore.unpepefyTipTimeout = setTimeout(
+        function () { Naziscore.openPopUp(e); }, 1000);
 };
 
 Naziscore.openPopUp = function () {
@@ -173,19 +181,21 @@ Naziscore.disableAndClosePopUp = function () {
 };
 
 Naziscore.scoreToShits = function (score) {
-    const host = window.location.host;
     var shits = '';
     // Probably something different will be needed here for
     // Twitter - maybe something with
     // document.getElementById("profile-hover-container")
-    var shit = '<img alt="🐸" class="naziscore_pepe" src="https://abs.twimg.com/emoji/v2/72x72/1f4a9.png">';
-    var unshit = '<img alt="🐸" class="naziscore_pepe" src="' + chrome.extension.getURL('unpepe.png') + '">';
+    var shit = '<img alt="🐸" class="naziscore_pepe" '
+        + 'src="https://abs.twimg.com/emoji/v2/72x72/1f4a9.png">';
+    var unshit = '<img alt="🐸" class="naziscore_pepe" src="'
+        + chrome.extension.getURL('unpepe.png') + '">';
     for (var i = 1; i <= 5; i++) {
         shits += i <= score ? shit : unshit;
     }
     return shits + '<!-- ' + score + ' -->';
 };
 
-// These have to be the last things we do here. They set everything else in motion.
+// These have to be the last things we do here. They set everything else in
+// motion.
 window.addEventListener('load', unPepefy);
 window.addEventListener('DOMSubtreeModified', unPepefy);
