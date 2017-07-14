@@ -64,3 +64,4 @@ notes_app/src/static/dashboard/app/*.js.map
 
 # Misc
 .flake8rc
+.eslintrc.js

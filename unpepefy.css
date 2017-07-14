@@ -1,0 +1,20 @@
+#naziscore_tip {
+    visibility: hidden;
+    position: fixed;
+    display: block;
+    top: 150pt;
+    left: 15pt;
+    width: 120pt;
+    height: 30pt;
+    z-index: 1000;
+    background: #d6d7d8;
+    color: black;
+    borderRadius: 5pt;
+    box-shadow: 10px 10px 50px -2px rgba(0,0,0,0.75);
+}
+
+.naziscore_pepe {
+    height: 20pt;
+    width: 20pt;
+    margin: 5pt 2pt;
+}
