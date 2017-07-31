@@ -3,7 +3,7 @@
 
     "name": "Unpepefy - Making Twitter Great Again",
     "description": "Browser extension to remove deplorable Pepes and other neonazi imagery from your Twitter timeline, now with Naziscore support.",
-    "version": "2.0.0",
+    "version": "2.0.1",
 
     "permissions": [
         "tabs",

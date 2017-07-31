@@ -2,8 +2,8 @@
 
 This extension removes frogs (🐸), glasses of milk (🥛) and "OK" hand
 signs (👌) from your timeline, replacing them with an emoji that more
-properly reflects the people who use them. It also provides a pop-up
-with data gathered from a Naziscore
+properly reflects the people who use them. Version 2 also provides a
+pop-up with data gathered from a Naziscore
 (https://github.com/rbanffy/naziscore) back-end offering a score based
 on an analisys of that profile's information, tweets, retweets and other
 behavior. This functionality works by sending the profile information

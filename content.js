@@ -98,6 +98,10 @@ Naziscore.TWEETDECK_PEPE_EMOJIS = [
         + '/1f44c-1f3fb.2cedf2cf1d.png'
 ];
 
+// TODO: add hootsuite.com support8 <img class="-emoji"
+// src="https://twemoji.maxcdn.com/36x36/1f417.png"
+// data-reactid=".6c.2.$lazyPlaceholder_twitter_888633302336380932.2.1.0.1.0.0.$1">
+
 Naziscore.CORRECT_EMOJI = 'https://abs.twimg.com/emoji/v2/72x72/1f4a9.png';
 
 Naziscore.HOST = window.location.host;
@@ -182,9 +186,12 @@ Naziscore.disableAndClosePopUp = function () {
 
 Naziscore.scoreToShits = function (score) {
     var shits = '';
-    // Probably something different will be needed here for
-    // Twitter - maybe something with
-    // document.getElementById("profile-hover-container")
+    // Probably something different will be needed here for Twitter - maybe
+    // something with document.getElementById("profile-hover-container") or
+    // <div id="profile-hover-container"
+    // data-associated-tweet-id="887644203441954816" data-screen-name="gattaca"
+    // data-user-id="1088411" style="top: 205px; left: 423px; opacity: 1;
+    // display: none;"></div>
     var shit = '<img alt="🐸" class="naziscore_pepe" '
         + 'src="https://abs.twimg.com/emoji/v2/72x72/1f4a9.png">';
     var unshit = '<img alt="🐸" class="naziscore_pepe" src="'
