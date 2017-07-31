@@ -50,10 +50,10 @@ var unPepefy = function() {
         for (i = 0; i < spans.length; i++) {
             for (var pepe in Naziscore.TWITTER_PEPE_EMOJIS) {
                 if (spans[i].style['background-image']
-                    == 'url(\'' + Naziscore.TWITTER_PEPE_EMOJIS[pepe] + '\')')
+                    == 'url(\"' + Naziscore.TWITTER_PEPE_EMOJIS[pepe] + '\")')
                 {
                     spans[i].style['background-image'] =
-                        'url(\'' + Naziscore.CORRECT_EMOJI + '\')';
+                        'url(\"' + Naziscore.CORRECT_EMOJI + '\")';
                 }
             }
         }
