@@ -20,7 +20,7 @@
 
 var unPepefy = function() {
 
-    var unpepefyLinks;
+    var unpepefyLinks;  // The links that will trigget the popup.
 
     if (Naziscore.HOST === 'twitter.com') {
         unpepefyLinks = Array.prototype.slice.call(
@@ -32,6 +32,17 @@ var unPepefy = function() {
         unpepefyLinks.concat(Array.prototype.slice.call(
             document.getElementsByClassName(
                 'fullname link-complex-target'), 0));
+    } else if (Naziscore.HOST === 'mobile.twitter.com') {
+        unpepefyLinks = Array.prototype.slice.call(
+            document.getElementsByClassName(
+                '_24ZRE115 Fe7ul3Lt _1sDONkTc wOLMyN5Z _2T9atdmI _3fg7OHdb '
+                + '_2DggF3sL _34Ymm628 _25OmqECI Ad6IhIJP'), 0);
+        unpepefyLinks.concat(Array.prototype.slice.call(
+            document.getElementsByClassName(
+                '_1Ap7MYUC Fe7ul3Lt Dk8nbDvd _2DggF3sL _3WJqTbOE'), 0));
+        unpepefyLinks.concat(Array.prototype.slice.call(
+            document.getElementsByClassName(
+                'Fe7ul3Lt Z5IeoGpY _2DggF3sL _34Ymm628'), 0));
     }
 
     for (var i = 0; i < unpepefyLinks.length; i++) {
@@ -74,6 +85,14 @@ var unPepefy = function() {
                 imgs[i].src = Naziscore.CORRECT_EMOJI;
             }
         }
+    } else if (Naziscore.HOST == 'mobile.twitter.com') {
+        imgs = document.getElementsByClassName('_3drRoZ4e');
+
+        for (i = 0; i < imgs.length; i++) {
+            if (Naziscore.MOBILE_TWITTER_EMOJIS.includes(imgs[i].src)) {
+                imgs[i].src = Naziscore.CORRECT_EMOJI;
+            }
+        }
     }
 };
 
@@ -85,6 +104,14 @@ Naziscore.TWITTER_PEPE_EMOJIS = [
     'https://abs.twimg.com/emoji/v2/72x72/1f44c.png',  // OK
     'https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fb.png', // OK, white
     'https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fc.png'  // OK, medium
+];
+
+Naziscore.MOBILE_TWITTER_EMOJIS = [
+    'https://abs-0.twimg.com/emoji/v2/svg/1f438.svg', // Pepe
+    'https://abs-0.twimg.com/emoji/v2/svg/1f95b.svg', // Milk glass
+    'https://abs-0.twimg.com/emoji/v2/svg/1f44c.svg', // OK
+    'https://abs-0.twimg.com/emoji/v2/svg/1f44c-1f3fb.svg',  // OK, white
+    'https://abs-0.twimg.com/emoji/v2/svg/1f44c-1f3fb.svg'   // OK, medium
 ];
 
 Naziscore.TWEETDECK_PEPE_EMOJIS = [

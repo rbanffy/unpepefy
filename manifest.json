@@ -8,6 +8,7 @@
     "permissions": [
         "tabs",
         "https://twitter.com/*",
+        "https://mobile.twitter.com/*",
         "https://tweetdeck.twitter.com/*",
         "https://naziscore.appspot.com/v1/screen_name/*/score.json"
     ],
@@ -23,6 +24,7 @@
         {
             "matches": [
                 "https://twitter.com/*",
+                "https://mobile.twitter.com/*",
                 "https://tweetdeck.twitter.com/*"
             ],
             "css": [ "unpepefy.css" ],

@@ -1,3 +1,7 @@
+2.0.2
+-----
+- Support Pepe replacement on mobile.twitter.com.
+
 2.0.1
 -----
 - Fix Pepe replacement on Twitter.
