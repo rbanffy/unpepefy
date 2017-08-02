@@ -103,7 +103,8 @@ Naziscore.TWITTER_PEPE_EMOJIS = [
     'https://abs.twimg.com/emoji/v2/72x72/1f95b.png', // Milk glass
     'https://abs.twimg.com/emoji/v2/72x72/1f44c.png',  // OK
     'https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fb.png', // OK, white
-    'https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fc.png'  // OK, medium
+    'https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fc.png', // OK, medium
+    'https://abs.twimg.com/emoji/v2/72x72/261d-1f3fb.png'  // Index, white
 ];
 
 Naziscore.MOBILE_TWITTER_EMOJIS = [
@@ -112,6 +113,7 @@ Naziscore.MOBILE_TWITTER_EMOJIS = [
     'https://abs-0.twimg.com/emoji/v2/svg/1f44c.svg', // OK
     'https://abs-0.twimg.com/emoji/v2/svg/1f44c-1f3fb.svg',  // OK, white
     'https://abs-0.twimg.com/emoji/v2/svg/1f44c-1f3fb.svg'   // OK, medium
+    'https://abs-0.twimg.com/emoji/v2/svg/261d-1f3fb.svg'  // Index, white
 ];
 
 Naziscore.TWEETDECK_PEPE_EMOJIS = [
@@ -123,6 +125,8 @@ Naziscore.TWEETDECK_PEPE_EMOJIS = [
         + '/1f44c.473b805d64.png',
     'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Small OK
         + '/1f44c-1f3fb.2cedf2cf1d.png'
+    'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Index, white
+        + '/261d-1f3fb.b674986303.png'
 ];
 
 // TODO: add hootsuite.com support8 <img class="-emoji"
