@@ -185,7 +185,7 @@ Naziscore.enablePopUp = function (e) {
     // Start an async fetch.
     var target = Naziscore.nearestLink(e.target);
     if (target === null) {
-        console.log('We have a null target. This should never happen');
+        console.log('We have a null target. This should never happen.');
     }
     var target_url = target.href;
     var screenName = target_url.substr(target_url.lastIndexOf('/') + 1);
