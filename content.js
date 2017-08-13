@@ -61,10 +61,10 @@ var unPepefy = function() {
         for (i = 0; i < spans.length; i++) {
             for (var pepe in Naziscore.TWITTER_PEPE_EMOJIS) {
                 if (spans[i].style['background-image']
-                    == 'url(\"' + Naziscore.TWITTER_PEPE_EMOJIS[pepe] + '\")')
+                    == 'url("' + Naziscore.TWITTER_PEPE_EMOJIS[pepe] + '")')
                 {
                     spans[i].style['background-image'] =
-                        'url(\"' + Naziscore.CORRECT_EMOJI + '\")';
+                        'url("' + Naziscore.CORRECT_EMOJI + '")';
                 }
             }
         }
@@ -185,7 +185,7 @@ Naziscore.enablePopUp = function (e) {
     // Start an async fetch.
     var target = Naziscore.nearestLink(e.target);
     if (target === null) {
-        console.log('We have a null target. This should never happen.');
+        console.error('We have a null target. This should never happen.');
     }
     var target_url = target.href;
     var screenName = target_url.substr(target_url.lastIndexOf('/') + 1);
