@@ -26,6 +26,9 @@ var unPepefy = function() {
         unpepefyLinks = Array.prototype.slice.call(
             document.getElementsByClassName(
                 'ProfileHeaderCard-nameLink u-textInheritColor js-nav'), 0);
+       unpepefyLinks.concat(Array.prototype.slice.call(
+            document.getElementsByClassName(
+                'fullname ProfileNameTruncated-link u-textInheritColor js-nav'), 0));
     } else if (Naziscore.HOST === 'tweetdeck.twitter.com') {
         unpepefyLinks = Array.prototype.slice.call(
             document.getElementsByClassName('account-link'), 0);
