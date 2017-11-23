@@ -18,9 +18,9 @@
 // Injected in the page, runs from there
 
 
-var unPepefy = function() {
+let unPepefy = function() {
 
-    var unpepefyLinks;  // The links that will trigget the popup.
+    let unpepefyLinks;  // The links that will trigger the popup.
 
     if (Naziscore.HOST === 'twitter.com') {
         unpepefyLinks = document.querySelectorAll('a.fullname, a.ProfileHeaderCard-nameLink');
@@ -32,7 +32,7 @@ var unPepefy = function() {
                 'fullname link-complex-target'), 0));
     }
 
-    for (var i = 0; i < unpepefyLinks.length; i++) {
+    for (let i = 0; i < unpepefyLinks.length; i++) {
         if (unpepefyLinks[i].unpepefied !== true) {  // Avoid doing it more than once.
             unpepefyLinks[i].addEventListener(
                 'mouseover', Naziscore.enablePopUp);
@@ -43,10 +43,10 @@ var unPepefy = function() {
     }
 
     if (Naziscore.HOST === 'twitter.com') {
-        var spans = document.getElementsByClassName('Emoji Emoji--forLinks');
+        let spans = document.getElementsByClassName('Emoji Emoji--forLinks');
 
         for (i = 0; i < spans.length; i++) {
-            for (var pepe in Naziscore.TWITTER_PEPE_EMOJIS) {
+            for (let pepe in Naziscore.TWITTER_PEPE_EMOJIS) {
                 if (spans[i].style['background-image']
                     == 'url("' + Naziscore.TWITTER_PEPE_EMOJIS[pepe] + '")')
                 {
@@ -56,7 +56,7 @@ var unPepefy = function() {
             }
         }
 
-        var imgs = document.getElementsByClassName('Emoji Emoji--forText');
+        let imgs = document.getElementsByClassName('Emoji Emoji--forText');
 
         for (i = 0; i < imgs.length; i++) {
             if (imgs[i].tagName === 'IMG'
@@ -83,7 +83,7 @@ var unPepefy = function() {
     }
 };
 
-var Naziscore = new Object();
+let Naziscore = new Object(); // Yes, it's global.
 
 Naziscore.TWITTER_PEPE_EMOJIS = [
     'https://abs.twimg.com/emoji/v2/72x72/1f438.png', // Pepe
@@ -133,7 +133,7 @@ Naziscore.cache = new Object();
 Naziscore.tip = document.createElement('div');
 Naziscore.tip.id = 'naziscore_tip';
 
-Naziscore.tip.innerHTML = '<p><span id="unpepefy_score"></p>';
+Naziscore.tip.innerHTML = '<p><span id="unpepefy_score" /></p>';
 document.body.insertBefore(Naziscore.tip, document.body.childNodes[0]);
 
 Naziscore.unpepefyScore = document.getElementById('unpepefy_score');
@@ -147,10 +147,10 @@ Naziscore.nearestLink = function (element) {
 };
 
 Naziscore.onReadyStateChange = function(e) {
-    var xhr = e.target;
+    let xhr = e.target;
     if (xhr.readyState === XMLHttpRequest.DONE &&
         xhr.status === 200) {
-        var response = JSON.parse(xhr.responseText);
+        let response = JSON.parse(xhr.responseText);
         if (response.score === undefined) {
             Naziscore.unpepefyScore.innerHTML = '<img alt="🐸" '
                 + 'class="naziscore_pepe" src="https://ton.twimg.com/'
@@ -159,7 +159,7 @@ Naziscore.onReadyStateChange = function(e) {
             Naziscore.unpepefyTipTimeout = setTimeout(
                 function () { Naziscore.disableAndClosePopUp(e); }, 3000);
         } else {
-            var screenName = xhr.responseURL.split('/')[5];
+            let screenName = xhr.responseURL.split('/')[5];
             Naziscore.cache[screenName] = response.score;
             Naziscore.unpepefyScore.innerHTML = Naziscore.scoreToShits(
                 response.score);
@@ -169,20 +169,20 @@ Naziscore.onReadyStateChange = function(e) {
 
 Naziscore.enablePopUp = function (e) {
     // Move the pop-up to its new place (it's hidden now).
-    var r = e.target.getBoundingClientRect();
+    let r = e.target.getBoundingClientRect();
     Naziscore.tip.style.left = (r.left + r.right) / 2 + 'px';
     Naziscore.tip.style.top = r.bottom + 'px';
 
     // Start an async fetch.
-    var target = Naziscore.nearestLink(e.target);
+    let target = Naziscore.nearestLink(e.target);
     if (target === null) {
         console.error('We have a null target. This should never happen.');
     }
-    var target_url = target.href;
-    var screenName = target_url.substr(target_url.lastIndexOf('/') + 1);
+    let target_url = target.href;
+    let screenName = target_url.substr(target_url.lastIndexOf('/') + 1);
     if (Naziscore.cache[screenName] === undefined) {  // Score not cached yet.
-        var xhr = new XMLHttpRequest();
-        var url = 'https://naziscore.appspot.com/v1/screen_name/'
+        let xhr = new XMLHttpRequest();
+        let url = 'https://naziscore.appspot.com/v1/screen_name/'
             + screenName + '/score.json';
         xhr.open('GET', url, true);
         xhr.onreadystatechange = Naziscore.onReadyStateChange;
@@ -207,16 +207,16 @@ Naziscore.disableAndClosePopUp = function () {
 };
 
 Naziscore.scoreToShits = function (score) {
-    var shits = '';
+    let shits = '';
     // Probably something different will be needed here for Twitter - maybe
     // something with document.getElementById("profile-hover-container") or
     // <div id="profile-hover-container"
     // data-associated-tweet-id="887644203441954816" data-screen-name="gattaca"
     // data-user-id="1088411" style="top: 205px; left: 423px; opacity: 1;
     // display: none;"></div>
-    var shit = '<img alt="🐸" class="naziscore_pepe" '
+    let shit = '<img alt="🐸" class="naziscore_pepe" '
         + 'src="https://abs.twimg.com/emoji/v2/72x72/1f4a9.png">';
-    var unshit = '<img alt="🐸" class="naziscore_pepe" src="'
+    let unshit = '<img alt="🐸" class="naziscore_pepe" src="'
         + chrome.extension.getURL('unpepe.png') + '">';
     for (var i = 1; i <= 5; i++) {
         shits += i <= score ? shit : unshit;
