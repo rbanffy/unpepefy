@@ -126,6 +126,10 @@ Naziscore.TWEETDECK_PEPE_EMOJIS = [
         + '/1f95b.c0e770ed7f.png',
     'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // OK
         + '/1f44c.473b805d64.png',
+    'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // White OK
+        + '/1f44c-1f3fb.c0187789bb.png',
+    'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Medium OK
+        + '/1f44c-1f3fc.c0187789bb.png',
     'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Small OK
         + '/1f44c-1f3fb.2cedf2cf1d.png',
     'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Index, white
