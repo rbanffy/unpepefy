@@ -1,7 +1,14 @@
+2.0.3
+-----
+- Added white and medium OK hand signs to Tweetdeck
+
 2.0.2
 -----
+- Added white
 - Support Pepe replacement on mobile.twitter.com.
 - Added a white index finger as a Pepe.
+- Code improvements - scope reduction
+- Global Naziscore object
 
 2.0.1
 -----
