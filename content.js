@@ -23,12 +23,7 @@ var unPepefy = function() {
     var unpepefyLinks;  // The links that will trigget the popup.
 
     if (Naziscore.HOST === 'twitter.com') {
-        unpepefyLinks = Array.prototype.slice.call(
-            document.getElementsByClassName(
-                'ProfileHeaderCard-nameLink u-textInheritColor js-nav'), 0);
-       unpepefyLinks.concat(Array.prototype.slice.call(
-            document.getElementsByClassName(
-                'fullname ProfileNameTruncated-link u-textInheritColor js-nav'), 0));
+        unpepefyLinks = document.querySelectorAll('a.fullname, a.ProfileHeaderCard-nameLink');
     } else if (Naziscore.HOST === 'tweetdeck.twitter.com') {
         unpepefyLinks = Array.prototype.slice.call(
             document.getElementsByClassName('account-link'), 0);
