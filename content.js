@@ -30,17 +30,6 @@ var unPepefy = function() {
         unpepefyLinks.concat(Array.prototype.slice.call(
             document.getElementsByClassName(
                 'fullname link-complex-target'), 0));
-    } else if (Naziscore.HOST === 'mobile.twitter.com') {
-        unpepefyLinks = Array.prototype.slice.call(
-            document.getElementsByClassName(
-                '_24ZRE115 Fe7ul3Lt _1sDONkTc wOLMyN5Z _2T9atdmI _3fg7OHdb '
-                + '_2DggF3sL _34Ymm628 _25OmqECI Ad6IhIJP'), 0);
-        unpepefyLinks.concat(Array.prototype.slice.call(
-            document.getElementsByClassName(
-                '_1Ap7MYUC Fe7ul3Lt Dk8nbDvd _2DggF3sL _3WJqTbOE'), 0));
-        unpepefyLinks.concat(Array.prototype.slice.call(
-            document.getElementsByClassName(
-                'Fe7ul3Lt Z5IeoGpY _2DggF3sL _34Ymm628'), 0));
     }
 
     for (var i = 0; i < unpepefyLinks.length; i++) {
