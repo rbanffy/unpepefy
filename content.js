@@ -91,7 +91,8 @@ Naziscore.TWITTER_PEPE_EMOJIS = [
     'https://abs.twimg.com/emoji/v2/72x72/1f44c.png',  // OK
     'https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fb.png', // OK, white
     'https://abs.twimg.com/emoji/v2/72x72/1f44c-1f3fc.png', // OK, medium
-    'https://abs.twimg.com/emoji/v2/72x72/261d-1f3fb.png'  // Index, white
+    'https://abs.twimg.com/emoji/v2/72x72/261d-1f3fb.png',  // Index, white
+    'https://abs.twimg.com/emoji/v2/72x72/1f300.png'  // Cyclone, fake verified
 ];
 
 Naziscore.MOBILE_TWITTER_EMOJIS = [
@@ -100,7 +101,8 @@ Naziscore.MOBILE_TWITTER_EMOJIS = [
     'https://abs-0.twimg.com/emoji/v2/svg/1f44c.svg', // OK
     'https://abs-0.twimg.com/emoji/v2/svg/1f44c-1f3fb.svg',  // OK, white
     'https://abs-0.twimg.com/emoji/v2/svg/1f44c-1f3fb.svg',   // OK, medium
-    'https://abs-0.twimg.com/emoji/v2/svg/261d-1f3fb.svg'  // Index, white
+    'https://abs-0.twimg.com/emoji/v2/svg/261d-1f3fb.svg',  // Index, white
+    'https://abs-0.twimg.com/emoji/v2/svg/1f300.svg'  // Cyclone, fake verified
 ];
 
 Naziscore.TWEETDECK_PEPE_EMOJIS = Naziscore.TWITTER_PEPE_EMOJIS.concat([
