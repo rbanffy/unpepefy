@@ -18,7 +18,7 @@
 // Injected in the page, runs from there
 
 
-let unPepefy = function() {
+let unPepefy = function () {
 
     let unpepefyLinks;  // The links that will trigger the popup.
 
@@ -48,8 +48,7 @@ let unPepefy = function() {
         for (i = 0; i < spans.length; i++) {
             for (let pepe in Naziscore.TWITTER_PEPE_EMOJIS) {
                 if (spans[i].style['background-image']
-                    == 'url("' + Naziscore.TWITTER_PEPE_EMOJIS[pepe] + '")')
-                {
+                    == 'url("' + Naziscore.TWITTER_PEPE_EMOJIS[pepe] + '")') {
                     spans[i].style['background-image'] =
                         'url("' + Naziscore.CORRECT_EMOJI + '")';
                 }
@@ -107,19 +106,19 @@ Naziscore.MOBILE_TWITTER_EMOJIS = [
 
 Naziscore.TWEETDECK_PEPE_EMOJIS = Naziscore.TWITTER_PEPE_EMOJIS.concat([
     'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Pepe
-        + '/1f438.d0b91522fe.png',
+    + '/1f438.d0b91522fe.png',
     'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Milk glass
-        + '/1f95b.c0e770ed7f.png',
+    + '/1f95b.c0e770ed7f.png',
     'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // OK
-        + '/1f44c.473b805d64.png',
+    + '/1f44c.473b805d64.png',
     'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // White OK
-        + '/1f44c-1f3fb.c0187789bb.png',
+    + '/1f44c-1f3fb.c0187789bb.png',
     'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Medium OK
-        + '/1f44c-1f3fc.c0187789bb.png',
+    + '/1f44c-1f3fc.c0187789bb.png',
     'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Small OK
-        + '/1f44c-1f3fb.2cedf2cf1d.png',
+    + '/1f44c-1f3fb.2cedf2cf1d.png',
     'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Index, white
-        + '/261d-1f3fb.b674986303.png'
+    + '/261d-1f3fb.b674986303.png'
 ]);
 
 // TODO: add hootsuite.com support8 <img class="-emoji"
@@ -142,13 +141,13 @@ Naziscore.unpepefyScore = document.getElementById('unpepefy_score');
 
 Naziscore.nearestLink = function (element) {
     // Go up the element tree until we find an A tag
-    while (element.tagName !== 'A'){
+    while (element.tagName !== 'A') {
         element = element.parentElement;
     }
     return element;
 };
 
-Naziscore.onReadyStateChange = function(e) {
+Naziscore.onReadyStateChange = function (e) {
     let xhr = e.target;
     if (xhr.readyState === XMLHttpRequest.DONE &&
         xhr.status === 200) {
@@ -159,7 +158,9 @@ Naziscore.onReadyStateChange = function(e) {
                 + 'tweetdeck-web/web/assets/global/backgrounds/'
                 + 'spinner_small_trans.de7dc51b0d.gif">';
             Naziscore.unpepefyTipTimeout = setTimeout(
-                function () { Naziscore.disableAndClosePopUp(e); }, 3000);
+                function () {
+                    Naziscore.disableAndClosePopUp(e);
+                }, 3000);
         } else {
             let screenName = xhr.responseURL.split('/')[5];
             Naziscore.cache[screenName] = response.score;
@@ -194,7 +195,9 @@ Naziscore.enablePopUp = function (e) {
             Naziscore.cache[screenName]);
     }
     Naziscore.unpepefyTipTimeout = setTimeout(
-        function () { Naziscore.openPopUp(e); }, 1000);
+        function () {
+            Naziscore.openPopUp(e);
+        }, 1000);
 };
 
 Naziscore.openPopUp = function () {
