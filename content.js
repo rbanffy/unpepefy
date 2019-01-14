@@ -130,7 +130,7 @@ Naziscore.CORRECT_EMOJI = 'https://abs.twimg.com/emoji/v2/72x72/1f4a9.png';
 
 Naziscore.HOST = window.location.host;
 
-Naziscore.cache = new Object();
+Naziscore.cache = {};
 
 Naziscore.tip = document.createElement('div');
 Naziscore.tip.id = 'naziscore_tip';
@@ -141,10 +141,10 @@ document.body.insertBefore(Naziscore.tip, document.body.childNodes[0]);
 Naziscore.unpepefyScore = document.getElementById('unpepefy_score');
 
 Naziscore.nearestLink = function (element) {
-    if (element.tagName === 'A') {
-        return element;
+    // Go up the element tree until we find an A tag
+    while (element.tagName !== 'A'){
+        element = element.parentElement;
     }
-    while ((element = element.parentElement) && element.tagName !== 'A');
     return element;
 };
 
