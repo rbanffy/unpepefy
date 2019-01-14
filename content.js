@@ -103,7 +103,7 @@ Naziscore.MOBILE_TWITTER_EMOJIS = [
     'https://abs-0.twimg.com/emoji/v2/svg/261d-1f3fb.svg'  // Index, white
 ];
 
-Naziscore.TWEETDECK_PEPE_EMOJIS = [
+Naziscore.TWEETDECK_PEPE_EMOJIS = Naziscore.TWITTER_PEPE_EMOJIS.concat([
     'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Pepe
         + '/1f438.d0b91522fe.png',
     'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Milk glass
@@ -118,7 +118,7 @@ Naziscore.TWEETDECK_PEPE_EMOJIS = [
         + '/1f44c-1f3fb.2cedf2cf1d.png',
     'https://ton.twimg.com/tweetdeck-web/web/assets/emoji' // Index, white
         + '/261d-1f3fb.b674986303.png'
-];
+]);
 
 // TODO: add hootsuite.com support8 <img class="-emoji"
 // src="https://twemoji.maxcdn.com/36x36/1f417.png"
