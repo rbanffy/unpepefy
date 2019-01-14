@@ -1,3 +1,8 @@
+2.0.4
+-----
+- Added standard Twitter Pepes to Tweetdeck's set
+- Added Cyclone to Pepes
+
 2.0.3
 -----
 - Added white and medium OK hand signs to Tweetdeck
