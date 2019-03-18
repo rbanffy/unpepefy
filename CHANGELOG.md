@@ -2,6 +2,7 @@
 -----
 - Added standard Twitter Pepes to Tweetdeck's set
 - Added Cyclone to Pepes
+- Code reformats and simplifications
 
 2.0.3
 -----
@@ -9,7 +10,6 @@
 
 2.0.2
 -----
-- Added white
 - Support Pepe replacement on mobile.twitter.com.
 - Added a white index finger as a Pepe.
 - Code improvements - scope reduction
